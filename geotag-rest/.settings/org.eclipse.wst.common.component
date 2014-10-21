@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="geotag-rest">
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
+        <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
+        <dependent-module archiveName="geotag-service.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/geotag-service/geotag-service">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="geotag-dao.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/geotag-dao/geotag-dao">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="geotag-logger.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/geotag-logger/geotag-logger">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="geotag-rest"/>
+        <property name="java-output-path" value="/geotag-rest/target/classes"/>
+    </wb-module>
+</project-modules>
