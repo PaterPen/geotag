@@ -32,4 +32,11 @@ public class GeoTagRest
 			return "{ status : \"ERROR\" }";
 		}
 	}
+	
+	@GET
+	@Path("/fetchInformation/{geoTagId}")
+	public String fetchInformation(@PathParam("geoTagId") long id) {
+		String response = service.fetchInformation(id);
+		return response;
+	}
 }

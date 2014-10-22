@@ -10,6 +10,7 @@ import com.chris.geotag.logger.GeoTagLogger;
 
 public class GeoTagServiceImpl implements GeoTagService {
 	GeoTagDaoImpl geoTagDao = new GeoTagDaoImpl();
+	GeoTagHTTPService GeoTagHTTP = new GeoTagHTTPService();
 	
 	public boolean createGeoTag(double latitude, double longitude) {
 		boolean result = true;
@@ -46,6 +47,16 @@ public class GeoTagServiceImpl implements GeoTagService {
 		
 		if (!gt.equals(null)) {
 			geoTagDao.delete(gt);
+		}
+	}
+
+	public String fetchInformation(long id) {
+		GeoTag gt = getGeoTag(id);
+		if (gt != null) {
+			String response = GeoTagHTTP.sendGet("http://nominatim.openstreetmap.org/reverse?format=json&zoom=17&lat=" + gt.getLatitude() + "&lon=" + gt.getLongitude());
+			return response;
+		} else {
+			return "GeoTag with id = " + id + " could not be found.";
 		}
 	}
 }
